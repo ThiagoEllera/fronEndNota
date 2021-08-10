@@ -1,0 +1,18 @@
+<dx-data-grid
+  id="grid"
+  [dataSource]="dataSource"
+  [repaintChangesOnly]="true"
+  [showBorders]="true">
+
+  <dxo-scrolling mode="virtual"></dxo-scrolling>
+  <dxo-editing
+    mode="cell"
+    [allowAdding]="true"
+    [allowUpdating]="true"
+    [allowDeleting]="true">
+  </dxo-editing>
+
+  <dxi-column dataField="codigo"></dxi-column>
+  <dxi-column dataField="descricao" ></dxi-column>
+  <dxi-column dataField="valor" ></dxi-column>
+</dx-data-grid>

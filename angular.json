@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cidade-estado": {
+    "frontEnd": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cidade-estado",
+            "outputPath": "dist/frontEnd",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,6 +50,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/devextreme/dist/css/dx.common.css",
+              "src/themes/generated/theme.base.css",
+              "src/themes/generated/theme.additional.css",
+              "src/dx-styles.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -59,8 +63,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "7mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -91,10 +95,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cidade-estado:build:production"
+              "browserTarget": "frontEnd:build:production"
             },
             "development": {
-              "browserTarget": "cidade-estado:build:development"
+              "browserTarget": "frontEnd:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -102,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cidade-estado:build"
+            "browserTarget": "frontEnd:build"
           }
         },
         "test": {
@@ -126,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "cidade-estado"
+  "defaultProject": "frontEnd"
 }
