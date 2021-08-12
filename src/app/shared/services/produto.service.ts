@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Estado} from "../../shared/interfaces/estado.interface";
-import {Produtos} from "./produto.interface";
+import {Estado} from "../interfaces/estado.interface";
+import {Produtos} from "../interfaces/produto.interface";
 import {take} from "rxjs/operators";
 
 @Injectable({
@@ -18,9 +18,5 @@ export class ProdutoService {
     return this.httpClient.get<Produtos[]>(this.API);
   }
 
-  create(produto: any){
-    return this.httpClient.post(this.API, produto).pipe(take(1));
-
-  }
 
 }

@@ -9,7 +9,8 @@
       mode="popup"
       [allowUpdating]="true"
       [allowAdding]="true"
-      [allowDeleting]="true">
+      [allowDeleting]="true"
+      [useIcons]="true">
 
       <dxo-popup
         title="Itens da Nota"
@@ -18,6 +19,7 @@
         [width]="700"
         [height]="525">
       </dxo-popup>
+
 
       <dxo-form>
         <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
@@ -32,8 +34,21 @@
 
     <dxi-column dataField="numero"></dxi-column>
     <dxi-column dataField="quantidade"></dxi-column>
-    <dxi-column dataField="numeroNota"></dxi-column>
-    <dxi-column dataField="nomeProduto"></dxi-column>
+    <dxi-column dataField="numeroNota">
+      <dxo-lookup
+        [dataSource]="notas"
+        displayExpr="numero"
+        valueExpr="numero">
+      </dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="nomeProduto">
+      <dxo-lookup
+        [dataSource]="produtos"
+        displayExpr="descricao"
+        valueExpr="descricao">
+      </dxo-lookup>
+
+    </dxi-column>
 
   </dx-data-grid>
 </div>

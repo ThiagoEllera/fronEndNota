@@ -9,7 +9,8 @@
       mode="popup"
       [allowUpdating]="true"
       [allowAdding]="true"
-      [allowDeleting]="true">
+      [allowDeleting]="true"
+      [useIcons]="true">
 
       <dxo-popup
         title="Nota"
@@ -18,6 +19,7 @@
         [width]="700"
         [height]="525">
       </dxo-popup>
+
 
       <dxo-form>
         <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
@@ -30,7 +32,13 @@
     </dxo-editing>
 
     <dxi-column dataField="dataCompra" dataType="date" format="dd/MM/yyyy"></dxi-column>
-    <dxi-column dataField="nomeCliente"></dxi-column>
+    <dxi-column dataField="nomeCliente">
+      <dxo-lookup
+        [dataSource]="clientes"
+        displayExpr="nome"
+        valueExpr="nome">
+      </dxo-lookup>
+    </dxi-column>
     <dxi-column dataField="numero"></dxi-column>
   </dx-data-grid>
 </div>

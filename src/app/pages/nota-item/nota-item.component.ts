@@ -3,6 +3,11 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import CustomStore from "devextreme/data/custom_store";
 import {BrowserModule} from "@angular/platform-browser";
 import {DxDataGridModule, DxDateBoxModule, DxListModule} from "devextreme-angular";
+import {ProdutoService} from "../../shared/services/produto.service";
+import {Produtos} from "../../shared/interfaces/produto.interface";
+import {NotaService} from "../../shared/services/nota.service";
+import {Notas} from "../../shared/interfaces/nota.interface";
+
 
 var URL = "http://localhost:8080/notaItem";
 
@@ -11,14 +16,21 @@ var URL = "http://localhost:8080/notaItem";
   templateUrl: './nota-item.component.html',
   styleUrls: ['./nota-item.component.scss']
 })
-export class NotaItemComponent {
+export class NotaItemComponent implements OnInit{
 
   dataSource: any;
+  produtos: any;
+  notas: any
 
   constructor(
     private http: HttpClient,
+    private produtoService:ProdutoService,
+    private notaService:NotaService
 
   ) {
+
+
+
     this.dataSource = new CustomStore({
       key: "id",
 
@@ -63,9 +75,26 @@ export class NotaItemComponent {
       })
 
   }
+  ngOnInit(): void {
+    this.popularProdutos();
+    this.popularNotas();
+  }
+  popularProdutos(){
+    this.produtoService.lista().subscribe((produtos: Produtos[]) =>{
+      this.produtos = produtos;
+      console.log(produtos);
+    })
+  }
 
-
+  popularNotas(){
+    this.notaService.lista().subscribe((notas: Notas[]) =>{
+      this.notas = notas;
+      console.log(notas);
+    })
+  }
 }
+
+
 
 
 @NgModule({
