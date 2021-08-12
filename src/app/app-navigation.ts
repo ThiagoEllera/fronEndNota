@@ -5,22 +5,24 @@ export const navigation = [
     icon: 'home'
   },
   {
+    text: 'Cliente',
+    path: '/cliente',
+    icon: 'product'
+  },
+  {
     text: 'Produto',
     path: '/produto',
     icon: 'product'
   },
   {
-    text: 'Examples',
-    icon: 'folder',
-    items: [
-      {
-        text: 'Profile',
-        path: '/profile'
-      },
-      {
-        text: 'Tasks',
-        path: '/tasks'
-      }
-    ]
-  }
+    text: 'Nota',
+    path: '/nota',
+    icon: 'newfolder'
+  },
+  {
+    text: 'NotaItem',
+    path: '/notaItem',
+    icon: 'orderedlist'
+  },
+
 ];

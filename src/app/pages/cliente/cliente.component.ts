@@ -1,32 +1,24 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridModule } from 'devextreme-angular';
-import {BrowserModule} from "@angular/platform-browser";
-import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import CustomStore from "devextreme/data/custom_store";
-import {DxListModule} from "devextreme-angular";
+import {BrowserModule} from "@angular/platform-browser";
+import {DxDataGridModule, DxDateBoxModule, DxListModule} from "devextreme-angular";
 
-
-
-var URL = "http://localhost:8080/produto";
-
-
+var URL = "http://localhost:8080/cliente";
 
 @Component({
-  selector: 'app-produto',
-  templateUrl: './produto.component.html',
-  styleUrls: ['./produto.component.scss'],
-  preserveWhitespaces: true
+  selector: 'app-cliente',
+  templateUrl: './cliente.component.html',
+  styleUrls: ['./cliente.component.scss']
 })
-export class ProdutoComponent {
-
+export class ClienteComponent   {
 
   dataSource: any;
 
 
 
 
-    constructor(
+  constructor(
     private http: HttpClient,
 
   ) {
@@ -44,7 +36,7 @@ export class ProdutoComponent {
       })
     });
 
-}
+  }
   sendRequest(url: string, method: string = "GET", data: any = {}): any {
 
     let result: any;
@@ -69,9 +61,8 @@ export class ProdutoComponent {
     return result
       .toPromise()
       .then((data: any) => {
-
+        console.log(data);
         return data;
-
       })
 
   }
@@ -85,9 +76,10 @@ export class ProdutoComponent {
     BrowserModule,
     DxDataGridModule,
     DxListModule,
-    HttpClientModule
+    HttpClientModule,
+    DxDateBoxModule
   ],
-  declarations: [ProdutoComponent],
-  bootstrap: [ProdutoComponent]
+  declarations: [ClienteComponent],
+  bootstrap: [ClienteComponent]
 })
-export class ProdutoModule { }
+export class ClienteModule { }
